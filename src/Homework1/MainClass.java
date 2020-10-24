@@ -12,4 +12,33 @@ package Homework1;
 5* . Выполнить задание с перечислениями( файл прикреплен в материалах)
 */
 public class MainClass {
+    public static void main(String[] args) {
+        // Создание массива участников
+        RunJump[] members = new RunJump[]{
+                new Cat(100, 30),
+                new Man(500, 80),
+                new Robot(1000, 200)
+        };
+        // Создание массива препятствий
+        Obstacle[] obstacles = new Obstacle[]{
+                new ObsTreadmill(90),
+                new ObsWall(10),
+                new ObsTreadmill(300),
+                new ObsWall(50),
+                new ObsTreadmill(800),
+                new ObsWall(150),
+        };
+
+        for (int i = 0; i < members.length; i++) {
+            for (int j = 0; j < obstacles.length; j++) {
+                if (!obstacles[j].work(members[i])) {
+                    System.out.println("!! Участник выбыл");
+                    break;
+                }
+            }
+        }
+        // Задание по enum
+        System.out.println(DayOfWeek.getWorkingHours(DayOfWeek.MONDAY));
+
+    }
 }
